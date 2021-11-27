@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息修改</title>
+    <link rel="stylesheet" href="/static/css/layui.css">
+</head>
+<body>
+<div style="width: 500px; height: 400px; margin: 100px auto">
+    <div style="color: crimson" align="center"><h2>信息修改</h2></div>
+    <form class="layui-form" action="{{ url_for('user.modify') }}" method="post">
+        <input type="hidden" name="stu_card" value="{{ message.stu_card }}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">学号</label>
+            <div class="layui-input-block">
+                 <input type="text" name="stu_card" value="{{ message.stu_card }}" required  lay-verify="required"  placeholder="请输入学院"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="stu_name" value="{{ message.stu_name }}" required  lay-verify="required" placeholder="请输入专业"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">学院</label>
+            <div class="layui-input-block">
+                <input type="text" name="college" value="{{ message.college }}" required  lay-verify="required" placeholder="请输入班级"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">专业</label>
+            <div class="layui-input-block">
+                <input type="text" name="major" value="{{ message.major }}" required  lay-verify="required" placeholder="请输入学号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">班级</label>
+            <div class="layui-input-block">
+                <input type="text" name="t_lass" value="{{ message.t_lass }}" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程</label>
+            <div class="layui-input-block">
+                <input type="text" name="course" value="{{ message.course }}" required  lay-verify="required" placeholder="请输入课程" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分数</label>
+            <div class="layui-input-block">
+                <input type="text" name="score" value="{{ message.score }}" required  lay-verify="required" placeholder="请输入分数" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+</div>
+<script src="/static/layui.js"></script>
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+        /*
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+          layer.msg(JSON.stringify(data.field));
+          return false;
+        });*/
+    })
+</script>
+</body>
+</html>

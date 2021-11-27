@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据管理</title>
+</head>
+<body>
+{% extends 'index.html' %}
+<div>
+    {% block content %}
+    <!-- 表单提交处 -->
+    <div class="layui-col-md9 site-content" style="margin-top:20px">
+        <form class="layui-form" action="{{ url_for('user.add') }}" method="post">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">学号</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="stu_card" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="stu_name" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">学院</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="college" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">专业</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="major" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">班级</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="t_lass" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">课程</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="course" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">分数</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="score" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label"></label>
+                    <div class="layui-input-inline">
+                        <button type="submit" class="layui-btn">添加</button>
+                        <span>{{ msg }}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 表格显示处 -->
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>学院</th>
+            <th>专业</th>
+            <th>班级</th>
+            <th>课程</th>
+            <th>分数</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作</th>
+        </tr>
+        </thead>
+        <tbody id="showTable">
+        </tr>
+        {% for message in messages %}
+            <tr>
+                <th>{{ message.stu_card }}</th>
+                <th>{{ message.stu_name }}</th>
+                <th>{{ message.college }}</th>
+                <th>{{ message.major }}</th>
+                <th>{{ message.t_lass }}</th>
+                <th>{{ message.course }}</th>
+                <th>{{ message.score }}</th>
+                <th><a href="{{ url_for('user.modify') }}?id={{ message.stu_card }}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal">修改</a>
+                <a href="{{ url_for('user.delete') }}?id={{ message.stu_card}}" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger">删除</a></th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+</div>
+</body>
+</html>
+<script type="text/javascript">
+{% block js %}
+
+{% endblock %}
+
+</script>
